@@ -1,0 +1,38 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Description>QuickLogger Dependency Injection Extensions and Standard Logging adapters for ASPNetCore.</Description>
+    <Version>1.6.7</Version>
+    <Copyright>Exilon &amp; Turrican</Copyright>
+    <PackageProjectUrl>https://github.com/exilon/QuickLogger/tree/master/library/wrappers/dotnet/QuickLogger</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/exilon/QuickLogger/tree/master/library/wrappers/dotnet/QuickLogger</RepositoryUrl>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageTags>Logger, Native, NetStandard, C++, C#, Delphi, CrossPlatform, Injectable</PackageTags>
+    <RepositoryType>GIT</RepositoryType>
+    <AssemblyVersion>1.6.7</AssemblyVersion>
+    <FileVersion>1.6.7</FileVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="QuickLogger.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="QuickLogger.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\QuickLogger.Extensions.Wrapper\QuickLogger.Extensions.Wrapper.csproj" />
+  </ItemGroup>
+
+</Project>
