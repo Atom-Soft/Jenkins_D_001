@@ -3,17 +3,12 @@
 interface
 
 uses
-//  Intf.Database,
   System.SysUtils, System.Classes,
   Web.HTTPApp,
-  MVCFramework, MVCFramework.Commons, FireDAC.Stan.Intf, FireDAC.Stan.Option,
-  FireDAC.Stan.Error, FireDAC.UI.Intf, FireDAC.Phys.Intf, FireDAC.Stan.Def,
-  FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys, FireDAC.VCLUI.Wait,
-  Data.DB, FireDAC.Comp.Client;
+  MVCFramework, MVCFramework.Commons;
 
 type
   TWebModuleMain = class(TWebModule)
-    FDConnection: TFDConnection;
     procedure WebModuleCreate(Sender: TObject);
     procedure WebModuleDestroy(Sender: TObject);
   private
@@ -32,6 +27,8 @@ implementation
 uses
   System.DateUtils,
   System.IOUtils,
+
+  Controller.Usage,
 
   MVCFramework.Swagger.Commons,
   MVCFramework.Middleware.Swagger,
@@ -52,7 +49,7 @@ begin
   FMVCEngine                        := TMVCEngine.Create(Self,
     procedure (AConfig: TMVCConfig)
     begin
-      AConfig[TMVCConfigKey.PathPrefix]             := '/lineup';
+      AConfig[TMVCConfigKey.PathPrefix]             := '/usage';
       AConfig[TMVCConfigKey.LoadSystemControllers]  := 'false';
       AConfig[TMVCConfigKey.DefaultContentCharset]  := TMVCCharSet.UTF_8;
     end
@@ -66,7 +63,7 @@ begin
     Description                 := 'Atom-Soft의 DMVCFramework API 모음';
     ContactName                 := 'Brad shin';
     ContactEmail                := 'atomsoft.official@gmail.com';
-    ContactUrl                  := 'https://';
+    ContactUrl                  := 'https://samjoko.tistory.com';
     LicenseName                 := 'Apache License - Version 2.0, January 2004';
     LicenseUrl                  := 'http://www.apache.org/licenses/LICENSE-2.0';
   end;
@@ -84,6 +81,8 @@ begin
     TPath.Combine(ExtractFilePath(GetModuleName(HInstance)), 'www'),
     'index.html'
   ));
+
+  FMVCEngine.AddController(TControllerHello);
 
 end;
 
